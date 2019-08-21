@@ -4,6 +4,7 @@
 import base64
 import json
 import urllib
+import urllib.request as request
 from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
@@ -29,7 +30,7 @@ class ExtensionKeywordListener(EventListener):
         token = base64.b64encode(str('%s:%s' % (user, password)).encode()).decode()
         url = urllib.parse.urljoin(workspace_url, 'rest/internal/2/productsearch/search')
         get_url = "%s?%s" % (url, urllib.parse.urlencode({'q': query}))
-        req = urllib.request.Request(get_url, headers={'Authorization': 'Basic %s' % token}, method="GET")
+        req = request.Request(get_url, headers={'Authorization': 'Basic %s' % token}, method="GET")
 
         result_types = []
 
