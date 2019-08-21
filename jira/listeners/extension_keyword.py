@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """ Created by Safa Arıman on 12.12.2018 """
+""" Updated by David Hollinger on 08.21.2019 """
 import base64
 import json
 import urllib
@@ -11,7 +12,7 @@ from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 
-__author__ = 'safaariman'
+__author__ = 'dhollinger'
 
 
 class ExtensionKeywordListener(EventListener):

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """ Created by Safa Arıman on 12.12.2018 """
+""" Updated by David Hollinger on 08.21.2019 """
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.shared.event import KeywordQueryEvent
 
 from jira.listeners.extension_keyword import ExtensionKeywordListener
 
-__author__ = 'safaariman'
+__author__ = 'dhollinger'
 
 
 class JiraExtension(Extension):
