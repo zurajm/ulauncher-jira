@@ -65,7 +65,7 @@ class ExtensionKeywordListener(EventListener):
             for issue in section.get("issues", []):
                 key = issue.get('key')
                 title = issue.get('summaryText')
-                url = urllib.parse.urljoin(workspace_url, "browse", key)
+                url = urllib.parse.urljoin(workspace_url, "browse/" + key)
                 results.append(
                     ExtensionResultItem(
                         name=title if not key else '%s - %s' % (key, title),
