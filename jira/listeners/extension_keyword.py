@@ -4,6 +4,7 @@
 import base64
 import json
 import urllib
+import ssl
 import urllib.request as request
 from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
@@ -35,7 +36,7 @@ class ExtensionKeywordListener(EventListener):
         result_types = []
 
         try:
-            response = urllib.request.urlopen(req)
+            response = urllib.request.urlopen(req, context=ssl._create_unverified_context())
             result_types = json.loads(response.read())
         except urllib.error.HTTPError as e:
             if e.code == 401:
