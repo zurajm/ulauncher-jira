@@ -61,7 +61,7 @@ class ExtensionKeywordListener(EventListener):
             return RenderResultListAction(results)
 
 
-        for section in results_types.get("sections", []):
+        for section in result_types.get("sections", []):
             for issue in section.get("issues", []):
                 key = issue.get('key')
                 title = issue.get('summaryText')
