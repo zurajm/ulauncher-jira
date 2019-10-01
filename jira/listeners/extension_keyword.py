@@ -49,7 +49,7 @@ class ExtensionKeywordListener(EventListener):
                     )
                 )
             return RenderResultListAction(results)
-        except urllib.error.URLError as e:
+        except Exception as e:
             results.append(
                 ExtensionResultItem(
                     name='Could not connect to Jira.',
