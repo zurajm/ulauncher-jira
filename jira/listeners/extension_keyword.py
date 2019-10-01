@@ -52,7 +52,7 @@ class ExtensionKeywordListener(EventListener):
             results.append(
                 ExtensionResultItem(
                     name='Could not connect to Jira.',
-                    description='Please check your workspace url and make sure you are connected to the internet.',
+                    description='{}'.format(e),
                     icon=self.icon_file,
                     on_enter=DoNothingAction()
                 )
