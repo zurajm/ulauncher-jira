@@ -29,11 +29,11 @@ class ExtensionKeywordListener(EventListener):
         password = extension.preferences.get('password')
 
         token = base64.b64encode(str('%s:%s' % (user, password)).encode()).decode()
-        url = urllib.parse.urljoin(workspace_url, 'rest/api/latest/search')
-        get_url = "%s?%s" % (url, urllib.parse.urlencode({'q': query}))
+        url = urllib.parse.urljoin(workspace_url, 'rest/api/2/issue/picker')
+        get_url = "%s?%s" % (url, urllib.parse.urlencode({'query': query}))
         req = request.Request(get_url, headers={'Authorization': 'Basic %s' % token}, method="GET")
 
-        result_types = []
+        result_types = {}
 
         try:
             response = urllib.request.urlopen(req, context=ssl._create_unverified_context())
@@ -60,11 +60,12 @@ class ExtensionKeywordListener(EventListener):
             )
             return RenderResultListAction(results)
 
-        for rtype in result_types:
-            for item in rtype.get('items', []):
-                key = item.get('subtitle')
-                title = item.get('title')
-                url = item.get('url')
+
+        for section in results_types.get("sections", []):
+            for issue in section.get("issues", []):
+                key = issue.get('key')
+                title = issue.get('summaryText')
+                url = urllib.parse.urljoin(workspace_url, "browse", key)
                 results.append(
                     ExtensionResultItem(
                         name=title if not key else '%s - %s' % (key, title),
