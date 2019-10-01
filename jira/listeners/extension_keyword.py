@@ -29,7 +29,7 @@ class ExtensionKeywordListener(EventListener):
         password = extension.preferences.get('password')
 
         token = base64.b64encode(str('%s:%s' % (user, password)).encode()).decode()
-        url = urllib.parse.urljoin(workspace_url, 'rest/internal/2/productsearch/search')
+        url = urllib.parse.urljoin(workspace_url, 'rest/api/latest/search')
         get_url = "%s?%s" % (url, urllib.parse.urlencode({'q': query}))
         req = request.Request(get_url, headers={'Authorization': 'Basic %s' % token}, method="GET")
 
